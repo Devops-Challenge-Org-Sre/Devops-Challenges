@@ -17,7 +17,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/python-app:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/python-app-new
 
   deploy:
     name: Deploy on GitHub Runner
@@ -26,11 +26,11 @@ jobs:
 
     steps:
       - name: Pull latest image
-        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/python-app:latest
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/python-app-new
 
       - name: Run container
         run: |
-          docker run -d -p 5000:5000 --name python-app ${{ secrets.DOCKERHUB_USERNAME }}/python-app:latest
+          docker run -d -p 5000:5000 --name python-app ${{ secrets.DOCKERHUB_USERNAME }}/python-app-new
           sleep 5   # wait for app startup
 
       - name: Validate application
