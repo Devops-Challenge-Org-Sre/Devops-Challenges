@@ -17,7 +17,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/python-app-new
+          tags: asrathour12/python-app-new:latest
 
   deploy:
     name: Deploy on GitHub Runner
@@ -30,7 +30,7 @@ jobs:
 
       - name: Run container
         run: |
-          docker run -d -p 5000:5000 --name python-app ${{ secrets.DOCKERHUB_USERNAME }}/python-app-new
+          docker run -d -p 5000:5000 --name python-app-new asrathour12/python-app-new:latest
           sleep 5   # wait for app startup
 
       - name: Validate application
