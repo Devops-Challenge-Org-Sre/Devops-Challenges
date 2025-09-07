@@ -5,7 +5,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copy files
-COPY app.py /app
+COPY . .
 
 # Install Flask
 RUN pip install flask
